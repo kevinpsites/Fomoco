@@ -1,0 +1,74 @@
+<%inherit file="homepage/templates/base.htm" />
+<%!from catalog import models as cmod%>
+<%block name="center">
+%if not orders:
+<div class="center-fi">
+  <h1>You Currently Have Zero Orders</h1>
+  <br />
+  <a class="btn btn-primary"href="/catalog/index">Click here to get one started</a>
+</div>
+
+  %else:
+  <h1>Your Orders</h1>
+  %for o in orders:
+  <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a id="title" data-toggle="collapse" href="#collapse${o.id}"><h2>Order #${o.id} - Order Date: ${o.order_date.date()}</h2></a>
+      </h4>
+    </div>
+    <div id="collapse${o.id}" class="panel-collapse collapse">
+      <table class="ord table table-striped">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Item Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        %for i in o.active_items(include_tax_item=False):
+
+
+      <tr>
+        <td>${i.product.name}</td>
+        <td>${i.price}</td>
+        <td>${i.quantity}</td>
+        <td>${i.extended}</td>
+
+      </tr>
+
+
+
+        %endfor
+        <tr id="end-row">
+          <td></td>
+          <td></td>
+          <td><strong>Tax</strong></td>
+          <td><strong>${o.get_item(product=cmod.Product.objects.filter(name="Sales Tax").first()).price}</strong></td>
+
+        </tr>
+        <tr id="end-row">
+
+          <td></td>
+          <td></td>
+          <td><strong>Total</strong></td>
+          <td><strong>${o.total_price}</strong></td>
+
+        </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+  </div>
+</div>
+%endfor
+
+
+
+  %endif
+</%block>

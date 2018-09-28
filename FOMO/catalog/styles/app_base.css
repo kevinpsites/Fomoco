@@ -1,0 +1,70 @@
+#catalog{
+  list-style: none;
+}
+#butt{
+  border-radius:15px;
+}
+
+.but{
+  color:black;
+  font-size: 1.35em;
+  margin:10px;
+  border:None;
+
+
+}
+
+h1 {
+  text-align: center;
+
+}
+
+.on{
+  /* background:linear-gradient(to bottom left, red,yellow); */
+  background:white;
+  color:#7DACC1;
+  border:solid 2px;
+  border-color: #7DACC1;
+}
+.on:hover{
+    color:#7DACC1;
+    border-color:#7DACC1;
+    background:#CCCCCC
+}
+
+.off{
+  /* background:linear-gradient(to top right, blue,lightgreen); */
+  background:#7DACC1;
+  color:white;
+}
+.off:hover{
+  color:#999999
+}
+
+#proList{
+  list-style: none;
+
+}
+.titl{font-size: 150%}
+
+.lil_prod{
+  width:75px;
+  height:75px;
+  margin:0px;
+  padding:3px;
+  border:#AAAAAA solid 2px;
+
+  display: flex;
+  flex-direction: column;
+}
+.lname{
+  font-size:75%;
+  text-align: center;
+  margin:0;
+  margin-bottom:12px;
+  color:black;
+}
+.dib{
+  align-content: center;
+  width:85px;
+}

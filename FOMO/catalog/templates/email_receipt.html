@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        .receipt {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .receipt td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .receipt tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+</style>
+  </head>
+  <body>
+    <p style="font-size:400%; font-family:serif;  margin:0 0 0 1em; border-bottom:solid #aaaaaa ">
+      FOMO
+    </p>
+    <h1 style="text-align:right; padding-right:1em;">Order Confirmation</h1>
+  <div style=" border-top:solid black; padding:0px 3% ">
+
+    <div style="width:48%;  float:left;">
+      <H1>Purchase Summary</H1>
+		<h2>Order Date: ${order.order_date.month}/${order.order_date.day}/${order.order_date.year}
+      <h3 style="margin-bottom:2px;">Your order is on its way to:</h3>
+      <p style="font-size:120%; margin-top:2px;">${order.ship_address}, ${order.ship_city}, ${order.ship_state} ${order.ship_zip_code}</p>
+    </div>
+    <div style="float:left; margin:10% 0 0 15%;">
+      <table style="border-spacing:0 12px 0 12px;align-content:right; margin-left:3%">
+        <tr >
+          <td style="font-size:150%">Subtotal:</td>
+
+
+          <td style="margin-left:10%;font-size:150%">${'${:,.2f}'.format(order.total_price - tax.price)}</td>
+        </tr>
+        <tr >
+          <td style="font-size:150%">Tax:</td>
+
+
+          <td style="margin-left:10%;font-size:150%">${'${:,.2f}'.format(tax.price)}</td>
+        </tr>
+        <tr style="border-top:black solid;">
+          <td style="font-size:150% ">Total:</td>
+
+
+          <td style="margin-left:10%;font-size:150%">${'${:,.2f}'.format(order.total_price)}</td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+
+<h3 style="clear:both; padding-top:20px; margin-bottom:2px;">Order Details | Order #${order.id}</h3>
+  <table class="receipt"style="width:100%; ">
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Qty</th>
+    <th>Row Total</th>
+  </tr>
+  %for i in items:
+  <tr>
+    <td>${i.product.name}</td>
+    <td>${'${:,.2f}'.format(i.price)}</td>
+    <td>${i.quantity}</td>
+    <td>${'${:,.2f}'.format(i.extended)}</td>
+  </tr>
+  %endfor
+
+</table>
+<br />
+
+
+<p style="text-align:center; font-size:200%">
+  <strong>Thank you for shopping with us! </strong><br />
+  <a href="https://www.fomoco.me" style="text-decoration:none; font-size:75%">Visit us again soon</a>
+  
+</p>
+<p style="text-align:center; font-size:100%;">
+Please do not reply to this message
+</p>
+  </body>
+</html>

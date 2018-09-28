@@ -1,0 +1,6 @@
+<%inherit file="/homepage/templates/base.htm" />
+
+<%block name="menu">
+  <li class="${'active' if request.dmp.page == 'ProductList' else ''}"><a href="/manager/ProductList/">Products</a></li>
+  <li class="${'active' if request.dmp.page == 'inventory' else ''}"><a href="/manager/inventory/">Inventory</a></li>
+</%block>

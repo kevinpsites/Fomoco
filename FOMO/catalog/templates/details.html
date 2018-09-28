@@ -1,0 +1,55 @@
+<%inherit file="app_base.htm"/>
+
+<%block name="top">
+  <h1>${product.name | h}</h1>
+
+</%block>
+
+<%block name="center">
+<br />
+<br />
+<div id="contents">
+
+  <ul id="list-o-pics">
+    % for item in pictures:
+
+      <li >
+        <div class="jq">
+          <img class="lil_img" src="${STATIC_URL}/catalog/media/products/${item.filename}"/ alt="${item.filename}" >
+
+        </div>
+      </li>
+    % endfor
+  </ul>
+  <img id="big_image" src=${product.image_url()} alt="${product.name}" >
+  <div class="disc">
+    <p>
+      <b>Price: $${product.price}</b>
+      ${product.description}
+    </p>
+
+
+
+%if product.get_quantity() == 0:
+ <p>
+   <strong>${product.name}s are currently out of stock. Please try back later.</strong>
+ </p>
+ %elif product.status=="I":
+ <p>
+   <strong>This item has been sold</strong>
+ </p>
+ %else:
+ <div class="endline">
+            ${form}
+</div>
+%endif
+
+
+
+  </div>
+
+</div>
+
+
+
+</%block>

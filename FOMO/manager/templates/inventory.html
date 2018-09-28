@@ -1,0 +1,102 @@
+<%inherit file="/app_base.htm" />
+<%!from catalog import models as cmod%>
+<%!from datetime import datetime,timedelta%>
+<%block name="content">
+
+<div class="container">
+  <div class="center-fi">
+    <h1>Inventory</h1>
+  </div>
+
+<h2>Bulk Products to Restock</h2>
+
+<table id="left"class="table table-striped">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Quantity</th>
+    <th>Reorder Trigger</th>
+    <th>Refill Qty</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  % for item in bulk:
+    %if item.quantity <= item.reorder_trigger:
+  <tr>
+
+    <td>${item.name}</td>
+    <td>${item.category}</td>
+    <td>${item.get_quantity()}</td>
+    <td>${item.reorder_trigger}</td>
+    <td>${item.reorder_quantity}</td>
+    <td><a href="/manager/editProduct/${item.id}">Edit</a> | <a href="/manager/deleteProduct/${item.id}">Delete</a></td>
+
+  </tr>
+    %endif
+  % endfor
+</tbody>
+</table>
+</div>
+
+<div class="container">
+<h2>Outstanding Rentals</h2>
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Renter's Email</th>
+    <th>Start Date</th>
+    <th>Return Date</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  % for item in rent:
+
+  <tr>
+
+    <td>${item.name}</td>
+    <td>$${item.price}</td>
+    <td>${cmod.OrderItem.objects.filter(product = item.id).last().order.user.email}</td>
+    <td>${cmod.OrderItem.objects.filter(product = item.id).last().order.order_date.date()}</td>
+    <td>${cmod.OrderItem.objects.filter(product = item.id).last().order.order_date.date() + timedelta(days=item.max_rental_days)}</td>
+    <td><a href="/manager/editProduct/${item.id}">Edit</a> | <a href="/manager/deleteProduct/${item.id}">Delete</a></td>
+  </tr>
+
+  % endfor
+
+</tbody>
+</table>
+</div>
+
+<!-- <div class="container">
+<h2>Individual Products Sold</h2>
+
+<table class="table table-striped">
+<thead>
+  <tr>
+
+    <th>Name</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  % for item in lone:
+  <tr>
+
+    <td>${item.name}</td>
+    <td>$ ${item.price}</td>
+    <td><a href="/manager/editProduct/${item.id}">Edit</a> | <a href="/manager/deleteProduct/${item.id}">Delete</a></td>
+  </tr>
+
+  % endfor
+
+</tbody>
+</table>
+</div> -->
+</%block>

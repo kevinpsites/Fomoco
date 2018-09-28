@@ -1,0 +1,13 @@
+<%inherit file="base.htm" />
+
+
+<%block name="menu">
+      <li class="${'active' if request.dmp.page == 'index'and request.dmp.app == 'homepage' else ''}"><a href="/homepage/index/">Home</a></li>
+      <li class="${'active' if request.dmp.app == 'catalog' else ''}"><a href="/catalog/index">Catalog</a></li>
+      <li class="${'active' if request.dmp.page == 'about' else ''}"><a href="/homepage/about/">About</a></li>
+      <li class="${'active' if request.dmp.page == 'contact' else ''}"><a href="/homepage/contact/">Contact</a></li>
+      <li class="${'active' if request.dmp.page == 'terms' else ''}"><a href="/homepage/terms/">Terms</a></li>
+      <li class="${'active' if request.dmp.page == 'faq' else ''}"><a href="/homepage/faq/">FAQ</a></li>
+      <!-- <li class="${'active' if request.dmp.page == 'sections' else ''}"><a href="/homepage/sections/">Sections</a></li> -->
+
+</%block>

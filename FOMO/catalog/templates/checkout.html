@@ -1,0 +1,25 @@
+<%inherit file="app_base.htm"/>
+<%block name="top">
+  <h1 class="push-center">Checkout</h1>
+</%block>
+<%block name="center">
+<br />
+
+<h2>Your Total: ${total}</h2>
+<%namespace name="fl" module="formlib.tags"/>
+<%fl:render>
+  <div class="text-center">
+    <script
+        src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="${settings.STRIPE_PUBLIC_KEY}"
+        data-amount="${int(cart.total_price * 100)}"
+        data-description="Thank you for choosing FOMO"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-local="auto"
+        data-label="Pay Now">
+    </script>
+
+  </div>
+</%fl:render>
+</%block>

@@ -1,0 +1,80 @@
+
+- model: contenttypes.contenttype
+  pk: 101
+  fields:
+      app_label: account
+      model: user2
+
+- model: auth.permission
+  pk: 101
+  fields:
+      name: Return a Product
+      content_type: 101
+      codename: return_product
+
+- model: auth.permission
+  pk: 102
+  fields:
+      name: Delete Project
+      content_type: 101
+      codename: delete_product
+
+- model: auth.permission
+  pk: 103
+  fields:
+      name: Finish Project
+      content_type: 101
+      codename: finish_product
+
+- model: auth.group
+  pk: 101
+  fields:
+      name: Tech Support
+      permissions: [101, 103]
+
+- model: auth.group
+  pk: 102
+  fields:
+      name: Management
+      permissions: [101, 102, 103]
+
+      #Add Groups Here
+- model: account.user
+  pk: 101
+  fields:
+    password: pbkdf2_sha256$100000$onoxPSCMAewf$dSD6+3qmrgi6dQe0ns95y0BE0geLM161cSpCkZyPBFA=
+    last_login: 2018-01-30 02:02:50.291231+00:00
+    is_superuser: true
+    email: Homer@Simpsons.com
+    first_name: Homer
+    last_name: Simpson
+    is_staff: true
+    is_active: true
+    date_joined: 2018-01-30 01:48:59.421266+00:00
+    birthdate: null
+    address: 742 Evergreen Terrace
+    city: Springfield
+    state: OR
+    zipcode: '12321'
+    groups: []
+    user_permissions: []
+
+- model: account.user
+  pk: 102
+  fields:
+    password: pbkdf2_sha256$100000$onoxPSCMAewf$dSD6+3qmrgi6dQe0ns95y0BE0geLM161cSpCkZyPBFA=
+    last_login: 2018-01-30 02:02:50.291231+00:00
+    is_superuser: false
+    email: Lisa@Simpsons.com
+    first_name: Lisa
+    last_name: Simpson
+    is_staff: true
+    is_active: true
+    date_joined: 2018-01-30 01:48:59.421266+00:00
+    birthdate: null
+    address: 742 Evergreen Terrace
+    city: Springfield
+    state: OR
+    zipcode: '12321'
+    groups: []
+    user_permissions: []

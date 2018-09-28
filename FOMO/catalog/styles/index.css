@@ -1,0 +1,12 @@
+#paginator{
+  padding-right:10%
+}
+#previous_page{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#next_page{
+  cursor: pointer;
+  text-decoration: none;
+}

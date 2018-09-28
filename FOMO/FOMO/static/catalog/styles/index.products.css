@@ -1,0 +1,55 @@
+ #pic_list {
+   list-style: none;
+ }
+.tile:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+ #pic_list >li > a > div > img {
+     width:165px;
+     margin-left:9px;
+     padding:0px;
+     border: 1px solid #CCCCCC
+
+ }
+
+ #pic_list > li {
+   display: inline-block;
+   position: relative;
+
+ }
+ #pic_list > li > a > div {
+
+
+   margin:12px 18px;
+   border: 2px solid #CCCCCC;
+   padding:12px;
+   border-radius:10px;
+   width: 210px;
+   Height: 210px;
+   vertical-align: top;
+   background-color:#f0f0f5
+
+
+   /* overflow-y: auto; */
+
+ }
+
+
+.nm{
+  font-family:Arial;
+  padding:4px ;
+
+
+
+}
+
+.price {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: #7DACC1;
+  color: white;
+  padding: 6px;
+  border-radius: 7px;
+}

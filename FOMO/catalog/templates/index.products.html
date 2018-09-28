@@ -1,0 +1,24 @@
+<%inherit file="base_ajax.htm" />
+<%block name="content">
+<ul id="pic_list">
+  % for item in qry:
+
+    <li >
+      <a href="/catalog/details/${item.id}">
+      <div class="tile">
+        <img src=${item.image_url()} alt="${item.name}" >
+        <br />
+        <div class="nm text-center">
+          ${item.name}
+          
+          <br />
+        </div>
+        <div class="price">
+          $${item.price}
+        </div>
+      </div>
+      </a>
+    </li>
+  % endfor
+</ul>
+</%block>

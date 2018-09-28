@@ -1,0 +1,26 @@
+.center-fi{
+  text-align: center;
+  margin-top:25%
+}
+
+#end-row{
+  background-color:#CBE5F0;
+
+}
+
+.ord{
+  width:100%
+}
+
+.ord td{
+  width:25%
+}
+
+h2{
+  margin:1px;
+  text-align:center;
+
+}
+#title{
+  text-decoration: none;
+}

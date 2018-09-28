@@ -1,0 +1,43 @@
+
+.title {
+  text-align:center;
+  color:white;
+  font-family:sans-serif;
+
+}
+.bigtitle{
+  font-size:300%;
+  color:#FCBE74;
+  font-family:'Gill Sans';
+}
+
+.move {
+
+margin-left:-7%
+
+}
+
+.black{
+  background:black
+}
+
+.imag{
+  width:100%;
+  border:2px
+}
+
+.centered{
+  text-align: center;
+}
+
+h1{
+  margin-top:2em;
+  color:white
+}
+
+.btn-color{
+  margin-left:30%;
+  background-color:#A40B0F;
+  border-color:#000000;
+
+}

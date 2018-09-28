@@ -1,0 +1,43 @@
+<%inherit file="/homepage/templates/app_base.htm" />
+<%!from catalog import models as cmod%>
+
+
+<%block name="left">
+<br />
+<br />
+<ul id="catalog" class="nav  nav-pills nav-stacked">
+  <li>
+    <a href="/catalog/index/" type="button" id="butt"class="but btn btn-primary nav-item category_nav ${'on' if name == 'All Products' else 'off'}">All Products</a>
+  </li>
+% for item in cmod.Category.objects.order_by('name'):
+  <li>
+
+    <a href="/catalog/index/${item.id}" type="button" id="butt"class="but btn btn-primary nav-item category_nav ${'on' if item.name == name else 'off'}">${item.name}</a>
+  </li>
+  % endfor
+</ul>
+</%block>
+
+<%block name="right">
+
+<p class="titl">
+  Recently Viewed:
+</p>
+  <ol id="proList">
+    <% i = 0  %>
+    %for item in request.last_five:
+    % if product != item and i != 5:
+    <li>
+      <a href="/catalog/details/${item.id}">
+        <div class="dib">
+          <img class="lil_prod" src=${item.image_url()} alt="" >
+          <h2 class='lname'>${item.name}</h2>
+        </div>
+
+      </a>
+    </li>
+    <% i = i + 1 %>
+    %endif
+    %endfor
+  </ol>
+</%block>
